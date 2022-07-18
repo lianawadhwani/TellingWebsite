@@ -4,6 +4,7 @@
 <head>
    <link rel="stylesheet" href="styles.css">
    <script src="script.js"></script>
+   <script src="https://unpkg.com/wavesurfer.js@6.2.0/dist/wavesurfer.js"></script>
   <title> Telling.ai Annotation Tool </title>
   <h1> Instructions for Annotators </h1>
 
@@ -81,6 +82,26 @@ Step 2: A white box should appear. Type desired annotation and then press enter
 <img id="dog" src="https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg" alt="telling.ai logo">
 <audio controls>
   <source src=https://soundbible.com/2034-Growling-Snarling-Dogs.html>
+<br>
+<br>
+<br>
+<br>
+
+<div id="waveform"></div>
+
+
+<script>
+var wavesurfer= WaveSurfer.create({
+
+container: '#waveform',
+wavecolor:'violet',
+progressColor:'purple',
+scrollParent: true
+});
+
+
+wavesurfer.load('websiteAudio.wav');
+</script> 
 
 </body>
 
