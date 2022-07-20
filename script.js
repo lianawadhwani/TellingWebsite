@@ -9,4 +9,5 @@ function message(){
   let word = document.getElementById("text").value;
   console.log(word);
   events.push(word);
+  document.write(<label for="new"> word </label> <br>)
 }
