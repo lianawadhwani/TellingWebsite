@@ -4,9 +4,11 @@ alert("helloWorld");
 }
 
 var events= ["cough", "wheeze"];
+let divList= document.getElementById('listHolder');
 function message(){
-  console.log("hidden message");
   let word = document.getElementById("text").value;
-  console.log(word);
+  let ul = document.getElementById('list');
+  let li = document.createElement('li');
+  ul.appendChild(li);
   events.push(word);
 }
