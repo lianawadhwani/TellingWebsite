@@ -7,10 +7,16 @@ var events= ["cough", "wheeze"];
 let divList= document.getElementById('listHolder');
 function message(){
   let word = document.getElementById("text").value;
-  console.log(word);
-  let ul = document.getElementById('list');
-  let li = document.createElement('li');
-  li.innerHTML = word;
-  ul.appendChild(li);
+  let form = document.getElementById('list');
+  let input = document.createElement('input');
+  let label = document.createElement("label");
+  label.setAttribute("for", word);
+  label.innerHTML=word;
+  input.setAttribute("type", "radio");
+  input.setAttribute("id", word);
+  input.setAttribute("value", word);
+  console.log(input);
+  form.appendChild(input);
+  form.appendChild(label);
   events.push(word);
 }
