@@ -86,7 +86,56 @@ Step 2: A white box should appear. Type desired annotation and then press enter
 <br>
 <br>
 
-<div id="waveform"></div>
+<div id="audio-spectrogram">
+<input type="button" id="play" value="Play" disabled="disabled"/>
+<input type="button" id="pause" value="Pause" disabled="disabled"/>
+<input type="button" id="stop" value="Stop" disabled="disabled"/>
+<script src="https://unpkg.com/wavesurfer.js@6.2.0/dist/wavesurfer.js"></script>
+<script>
+  let play =document.getElementById("play");
+  let pause =document.getElementById("pause");
+  let stop =document.getElementById("stop");
+
+
+  let wavesurfer= WaveSurfer.create({
+    container: '#audio-spectrogram',
+    progressColor: 'violet',
+    scrollParent: true
+  });
+
+
+  play.addEventListner("click", function(){
+      wavesurfer.play();
+      stop.disabled = false;
+      pause.disabled = false;
+      play.disabled = true;
+  }, false);
+
+
+  pause.addEventListner("click", function(){
+    wavesurfer.pause();
+    play.disabled = false;
+    pause.disabled = true;
+  }, false);
+
+  stop.addEventListner("click", function(){
+      wavesurfer.stop();
+      play.disabled = false;
+      stop.disabled = true;
+      pause.disabled = true;
+  }, false);
+
+  wavesurfer.on('ready', function(){
+        play.disabled= false;
+
+  });
+
+  wavesurfer.load("websiteAudio.wav");
+
+</script>
+
+
+</div>
 
 
 
