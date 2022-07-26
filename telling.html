@@ -92,9 +92,9 @@ Step 2: A white box should appear. Type desired annotation and then press enter
 <input type="button" id="stop" value="Stop" disabled="disabled"/>
 <script src="https://unpkg.com/wavesurfer.js@6.2.0/dist/wavesurfer.js"></script>
 <script>
-  let play =document.getElementById("play");
-  let pause =document.getElementById("pause");
-  let stop =document.getElementById("stop");
+  let playbt =document.getElementById("play");
+  let pausebt =document.getElementById("pause");
+  let stopbt =document.getElementById("stop");
 
 
   let wavesurfer= WaveSurfer.create({
@@ -104,29 +104,34 @@ Step 2: A white box should appear. Type desired annotation and then press enter
   });
 
 
-  play.addEventListner("click", function(){
-      wavesurfer.play();
-      stop.disabled = false;
-      pause.disabled = false;
-      play.disabled = true;
-  }, false);
+  playbt.addEventListener("click", played, false);
+  function played(){
+    wavesurfer.play();
+    stopbt.disabled = false;
+    pausebt.disabled = false;
+    playbt.disabled = true;
+  }
 
 
-  pause.addEventListner("click", function(){
+  pausebt.addEventListener("click", paused, false);
+
+  function paused(){
     wavesurfer.pause();
-    play.disabled = false;
-    pause.disabled = true;
-  }, false);
+    playbt.disabled = false;
+    pausebt.disabled = true;
+  }
 
-  stop.addEventListner("click", function(){
-      wavesurfer.stop();
-      play.disabled = false;
-      stop.disabled = true;
-      pause.disabled = true;
-  }, false);
+  stopbt.addEventListener("click", stoped, false);
+
+  function stoped(){
+    wavesurfer.stop();
+    playbt.disabled = false;
+    stopbt.disabled = true;
+    pausebt.disabled = true;
+  }
 
   wavesurfer.on('ready', function(){
-        play.disabled= false;
+        playbt.disabled= false;
 
   });
 
