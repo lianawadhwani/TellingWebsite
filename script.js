@@ -20,3 +20,16 @@ function message(){
   form.appendChild(label);
   events.push(word);
 }
+
+
+function valid(){
+let email = document.getElementById("email").value;
+let validRegex =  /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if (email.match(validRegex)){
+  return (true);
+} else{
+  alert("Your email is not valid. Please enter in a new email");
+  return (false);
+}
+
+}
