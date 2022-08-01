@@ -95,7 +95,7 @@ tag.appendChild(deviceinfo);
 let element = document.getElementById("useragent-string");
 element.appendChild(tag);
 
-let http = require("http");
+let http = require("https");
 let data= JSON.stringify({
   email: document.getElementBydId("email").value,
   deviceInfo: tag
@@ -105,11 +105,29 @@ let data= JSON.stringify({
  let options={
     hostname:'reqres.in',
     path:'/api/users'
+    method: 'POST',
+    header:{
+      'Content-Type': 'application/json'
+    }
 
+ }; 
 
- }
+let req= http.request(options, (res) => {
+  let body='';
+  console.log("Status Code:",res.statusCode)
 
-let req= http.request(options, () => {})
+  res.on('data', (chunk) =>{
+    body+=chunk;
+  })
+
+  res.on('end', () => {
+    console.log("Body: ", JSON.parse(data));
+
+  })
+})
+
+req.write(data);
+req.end();
 
 
 </script>
