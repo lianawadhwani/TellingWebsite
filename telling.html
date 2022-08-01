@@ -86,6 +86,7 @@ Step 2: A white box should appear. Type desired annotation and then press enter
 <br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js" integrity="sha512-eYPrm8TgYWg3aa6tvSRZjN4v0Z9Qx69q3RhfSj+Mf89QqwOMqmwSlsVqfp4N8NVAcZe/YeUhh9x/nM2CAOp6cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div id="useragent-string">
 <script>
 
@@ -95,39 +96,20 @@ tag.appendChild(deviceinfo);
 let element = document.getElementById("useragent-string");
 element.appendChild(tag);
 
-let http = require("https");
-let data= JSON.stringify({
-  email: document.getElementBydId("email").value,
-  deviceInfo: tag
+$.ajax({
+  type: "POST",
+  url: "https://reqbin.com/echo/post/json",
+  data:`{
+    "email": document.getElementById("email").value,
+    "deviceInfo": tag,
+   }`,
 
+  success: function(result){
+    console.log(result);
+  },
+
+  dataType: "json"
 });
-
- let options={
-    hostname:'reqres.in',
-    path:'/api/users'
-    method: 'POST',
-    header:{
-      'Content-Type': 'application/json'
-    }
-
- }; 
-
-let req= http.request(options, (res) => {
-  let body='';
-  console.log("Status Code:",res.statusCode)
-
-  res.on('data', (chunk) =>{
-    body+=chunk;
-  })
-
-  res.on('end', () => {
-    console.log("Body: ", JSON.parse(data));
-
-  })
-})
-
-req.write(data);
-req.end();
 
 
 </script>
