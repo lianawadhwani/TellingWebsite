@@ -37,6 +37,7 @@ if (email.match(validRegex)){
 }
 
 function post(){
+if (valid()==true){
   $.ajax({
     type: "POST",
     url: "https://reqbin.com/echo/post/json",
@@ -51,5 +52,6 @@ function post(){
 
     dataType: "json"
   });
+}
 
 }
