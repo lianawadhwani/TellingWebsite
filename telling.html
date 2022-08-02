@@ -99,10 +99,10 @@ element.appendChild(tag);
 $.ajax({
   type: "POST",
   url: "https://reqbin.com/echo/post/json",
-  data:`{
-    "email": document.getElementById("email").value,
-    "deviceInfo": tag,
-   }`,
+  data:{
+    "email": ":memmee",
+    "deviceInfo": platform.description,
+   },
 
   success: function(result){
     console.log(result);
