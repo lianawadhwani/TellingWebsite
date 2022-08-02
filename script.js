@@ -35,3 +35,21 @@ if (email.match(validRegex)){
 }
 
 }
+
+function post(){
+  $.ajax({
+    type: "POST",
+    url: "https://reqbin.com/echo/post/json",
+    data:{
+      "email": document.getElementById("email").value ,
+      "deviceInfo": platform.description,
+     },
+
+    success: function(result){
+      console.log(result);
+    },
+
+    dataType: "json"
+  });
+
+}

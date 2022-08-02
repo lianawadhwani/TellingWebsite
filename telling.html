@@ -15,7 +15,7 @@
 <div id="user-info">
 <label for="email"> Enter Your Email: </label>
 <input type="email" id="email" name="email">
-<button onclick="valid()" id="submit2"> Submit </button>
+<button onclick="valid(); post();" id="submit2"> Submit </button>
 </div>
 
 <p id="p1"> Instructions: <br>
@@ -95,22 +95,6 @@ let deviceinfo= document.createTextNode(platform.description);
 tag.appendChild(deviceinfo);
 let element = document.getElementById("useragent-string");
 element.appendChild(tag);
-
-$.ajax({
-  type: "POST",
-  url: "https://reqbin.com/echo/post/json",
-  data:{
-    "email": ":memmee",
-    "deviceInfo": platform.description,
-   },
-
-  success: function(result){
-    console.log(result);
-  },
-
-  dataType: "json"
-});
-
 
 </script>
 
