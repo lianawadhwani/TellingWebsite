@@ -25,6 +25,10 @@ if (valid()==true){
       console.log(result);
     },
 
+    error: function (){
+      alert("error loading results"); 
+    }
+
     dataType: "json"
   });
 }
