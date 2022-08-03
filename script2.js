@@ -26,8 +26,8 @@ if (valid()==true){
     },
 
     error: function (){
-      alert("error loading results"); 
-    }
+      alert("error loading results");
+    }, 
 
     dataType: "json"
   });
