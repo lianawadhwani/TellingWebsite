@@ -10,12 +10,16 @@ if (email.match(validRegex)){
 
 }
 
+let urL = new URL("http://127.0.0.1:61585/TellingWebsite/invitation.html");
+console.log("https://"+urL.hostname+"/api/email_invitation");
+
+
 function post(){
 if (valid()==true){
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "https://reqbin.com/echo/post/json",
+    url: "https://"+urL.hostname+"/api/email_invitation",
     data:{
       "email": document.getElementById("email").value ,
       "deviceInfo": platform.description,
@@ -27,7 +31,7 @@ if (valid()==true){
 
     error: function (){
       alert("error loading results");
-    }, 
+    },
 
     dataType: "json"
   });
